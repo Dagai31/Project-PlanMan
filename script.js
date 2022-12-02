@@ -75,9 +75,8 @@ function store(e) {
   accounts = localStorage.getObject('accounts')
   var email = document.getElementById('login_email').value
   if (
-    accounts.hasOwnProperty(email) //&&
-    //Object.entries(accounts[email])[password] ==
-    // document.getElementById('login_password')
+    accounts.hasOwnProperty(email) &&
+    accounts[email]["password"] === document.getElementById('login_password').value
   ) {
     sessionStorage.setItem(
       'user_email',
