@@ -63,11 +63,10 @@ function signup() {
   accounts[document.getElementById('signup_email').value] = {}
   account = accounts[document.getElementById('signup_email').value]
   account['password'] = document.getElementById('signup_pass').value
-  localStorage.setItem(
-    'login_email',
+  sessionStorage.setItem(
+    'user_email',
     document.getElementById('signup_email').value
   )
-  alert(JSON.stringify(accounts))
   localStorage.setItem('accounts', JSON.stringify(accounts))
 }
 
@@ -112,7 +111,6 @@ function valPas() {
 function incorectPas(){
   if (document.getElementById('signup_pass').value != "" && document.getElementById('signup_confirm_pass').value != "") 
   {
-    alert("Your response is submitted");
   } else {
     alert("Please fill all the fields");
   }

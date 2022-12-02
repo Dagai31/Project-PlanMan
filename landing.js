@@ -1,4 +1,7 @@
 window.addEventListener('load', () => {
+  if(!sessionStorage.getItem('user_email')) {
+    window.location.replace("index.html");
+  }
   document.getElementById('name').value = sessionStorage.getItem('user_email')
 })
 
