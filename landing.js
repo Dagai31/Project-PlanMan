@@ -36,7 +36,6 @@ addTask.addEventListener("click",(e)=> {
        }
 
 
-
 //hide item you dont want to see on the list
   var hideItem = document.getElementsByClassName("close");
   var i;
@@ -60,7 +59,7 @@ addTask.addEventListener("click",(e)=> {
 function emptyInput()
 {
   var input = document.getElementById("content_todo").value;
-  if (input == "") {
+  if (input.replaceAll(' ', '').length == 0) {
     alert("You forgot to put your task in!");
     return false;
   }
