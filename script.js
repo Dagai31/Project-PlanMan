@@ -68,7 +68,7 @@ function valPas() {
   }
 
 }
-//checking for incorrect password
+//checking for incorrect 
 function incorectPas(){
   if (document.getElementById('signup_pass').value != "" && document.getElementById('signup_confirm_pass').value != "") 
   {
