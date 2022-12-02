@@ -37,8 +37,9 @@
       <form onsubmit="store()" class="login" action="landing.html">
 
         <div class="field">
-          <input id="login_email" type="email" placeholder="Email Address" required >
+          <input id="login_email" type="email" placeholder="Email Address" required>
         </div>
+        <span id="incorrect_email_alert"></span>
         <div class="field">
           <input type="password" placeholder="Password" required>
         </div>
@@ -48,7 +49,7 @@
         <div class="field btn">
           <div class="btn-layer">
           </div>
-          <input type="submit" value="Login">
+          <input type="submit" value="Login" onclick="valLogMail()">
         </div>
         <div class="signup-link">
           Not a member? <a href="">Sign up now</a>
@@ -58,17 +59,19 @@
       <!-- signup form leading to landing page -->
       <form class="signup" onsubmit="store()">
         <div class="field">
-          <input id="email" type="text" placeholder="Email Address" required>
+          <input id="signup_email" type="email" placeholder="Email Address" required onkeyup="valSignMail()">
+        </div>
+        <span id="lblError" style="color: red"></span>
+        <div class="field">
+          <input type="password" id="signup_pass" placeholder="Password" required>
         </div>
         <div class="field">
-          <input type="password" placeholder="Password" required>
+          <input type="password" id="signup_confirm_pass" placeholder="Confirm password" required onkeyup="valPas()">
         </div>
-        <div class="field">
-          <input type="password" placeholder="Confirm password" required>
-        </div>
+        <span id="wrong_pass_alert"></span>
         <div class="field btn">
           <div class="btn-layer"></div>
-          <input type="submit" value="Sign up">
+          <input type="submit" value="Sign up" onclick="incorectPas()">
         </div>
       </form>
     </div>
