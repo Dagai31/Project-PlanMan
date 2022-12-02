@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Lists</title>
+    <link rel="stylesheet" href="landing.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- App Wrapper -->
+<main class="app">
+
+    <!-- Greeting -->
+    <section class="greeting">
+        <h1 class="title">
+            What's up, <input type="text" id="name" placeholder="Name here" />
+        </h1>
+    </section>
+
+    <!-- Todo -->
+    <section class="create-todo">
+        <h3>ADD AN ITEM</h3>
+        <form id="new-todo-form">
+            <h4>What's on your action list?</h4>
+            <input
+                    type="text"
+                    placeholder="e.g. create PlanMan frontend"
+                    name="content"
+                    id="content" />
+
+            <h4>Pick a category</h4>
+            <div class="options">
+                <label>
+                    <input type="radio" name="category" id="category1" value="business" />
+                    <span class="bubble business"></span>
+                    <div>To Do</div>
+                </label>
+                <label>
+                    <input type="radio" name="category" id="category2" value="personal" />
+                    <span class="bubble personal"></span>
+                    <div>In Progress</div>
+                </label>
+            </div>
+
+            <input type="submit" value="Add todo" />
+        </form>
+    </section>
+
+    <!-- Todo List -->
+    <section class="todo-list">
+        <h2>PROJECT DASHBOARD</h2>
+        <div class="list" id="todo-list"></div>
+    </section>
+
+</main>
+
+<!-- JS -->
+<script src="scripts.js"></script>
+</body>
+</html>

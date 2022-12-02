@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<!-- login + registration page when reaching website -->
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>PlanMan</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- title -->
+<div style="text-align:center;">
+  <h1>PlanMan</h1>
+</div>
+
+<!-- description -->
+<div style="text-align:center;">
+  <p>Breaking down large projects/tasks into small manageable assignments that helps track progress</p>
+</div>
+
+<!--making the form that you can slide between -->
+<div class="wrapper">
+  <div class="form-container">
+    <div class="slide-controls">
+      <input type="radio" name="slide" id="login" checked>
+      <input type="radio" name="slide" id="signup">
+      <label for="login" class="slide login">Login</label>
+      <label for="signup" class="slide signup">Sign up</label>
+      <div class="slider-tab"></div>
+    </div>
+    <div class="form-inner">
+
+      <!-- submitting form leads to main landing page from login -->
+      <form action='landing.html' class="login">
+
+
+        <div class="field">
+          <input type="text" placeholder="Email Address" required>
+        </div>
+        <div class="field">
+          <input type="password" placeholder="Password" required>
+        </div>
+        <div class="pass-link">
+          <a href="#">Forgot password?</a>
+        </div>
+        <div class="field btn">
+          <div class="btn-layer">
+          </div>
+          <input type="submit" value="Login">
+        </div>
+        <div class="signup-link">
+          Not a member? <a href="">Sign up now</a>
+        </div>
+      </form>
+
+      <!-- signup form leading to landing page -->
+      <form action="landing.html" class="signup">
+        <div class="field">
+          <input type="text" placeholder="Email Address" required>
+        </div>
+        <div class="field">
+          <input type="password" placeholder="Password" required>
+        </div>
+        <div class="field">
+          <input type="password" placeholder="Confirm password" required>
+        </div>
+        <div class="field btn">
+          <div class="btn-layer"></div>
+          <input type="submit" value="Sign up">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+ <form id="register-form"> 
+            <input id="name" type="text" placeholder="Name" value=""/>
+            <input id="pw" type="password" placeholder="Password" value=""/>
+            <input id="rgstr_btn" type="submit" value="get Account" onClick="store()"/> 
+        </form>
+
+        <form id="login-form"> 
+            <input id="userName" type="text" placeholder="Enter Username" value=""/>
+            <input id="userPw" type="password" placeholder="Enter Password" value=""/>
+            <input id="login_btn" type="submit" value="Login" onClick="check()"/> 
+       </form>
+
+    <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" language="javascript" src="login.js"></script>
+
+
+
+
+
+
+<!-- formatting -->
+<script>
+  const loginText = document.querySelector(".title-text .login");
+  const loginForm = document.querySelector("form.login");
+  const loginBtn = document.querySelector("label.login");
+  const signupBtn = document.querySelector("label.signup");
+  const signupLink = document.querySelector("form .signup-link a");
+  signupBtn.onclick = (()=>{
+    loginForm.style.marginLeft = "-50%";
+    loginText.style.marginLeft = "-50%";
+  });
+  loginBtn.onclick = (()=>{
+    loginForm.style.marginLeft = "0%";
+    loginText.style.marginLeft = "0%";
+  });
+  signupLink.onclick = (()=>{
+    signupBtn.click();
+    return false;
+  });
+</script>
+</body>
+</html>
