@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-  document.getElementById('name').value = localStorage.getItem('login_email')
+  document.getElementById('name').value = sessionStorage.getItem('user_email')
 })
 
 const item = document.getElementById('text')

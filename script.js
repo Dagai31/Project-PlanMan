@@ -9,16 +9,16 @@ Storage.prototype.getObject = function(key) {
 
 window.addEventListener('load', () => {
   todos = JSON.parse(localStorage.getItem('todos')) || []
-  const nameInput = document.querySelector('#name')
+  const nameInput = document.querySelector('#login_email')
   const newTodoForm = document.querySelector('#new-todo-form')
-  const username = localStorage.getItem('username') || ''
+  const username = sessionStorage.getItem("user_email") || ''
 
   if (nameInput)
   {
     nameInput.value = username
 
     nameInput.addEventListener('change', (e) => {
-      localStorage.setItem('username', e.target.value)
+      sessionStorage.setItem('user_email', e.target.value)
     })
   }
 
@@ -79,9 +79,9 @@ function store(e) {
     //Object.entries(accounts[email])[password] ==
     // document.getElementById('login_password')
   ) {
-    localStorage.setItem(
-      'login_email',
-      document.getElementById('login_email').value
+    sessionStorage.setItem(
+      'user_email',
+      email
     )
     return true
   } else {
