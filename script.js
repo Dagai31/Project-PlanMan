@@ -1,36 +1,52 @@
+Storage.prototype.setObject = function(key, value) {
+    this.setItem(key, JSON.stringify(value));
+}
+
+Storage.prototype.getObject = function(key) {
+    var value = this.getItem(key);
+    return value && JSON.parse(value);
+}
+
 window.addEventListener('load', () => {
   todos = JSON.parse(localStorage.getItem('todos')) || []
   const nameInput = document.querySelector('#name')
   const newTodoForm = document.querySelector('#new-todo-form')
   const username = localStorage.getItem('username') || ''
 
-  nameInput.value = username
+  if (nameInput)
+  {
+    nameInput.value = username
 
-  nameInput.addEventListener('change', (e) => {
-    localStorage.setItem('username', e.target.value)
-  })
+    nameInput.addEventListener('change', (e) => {
+      localStorage.setItem('username', e.target.value)
+    })
+  }
 
+  if (newTodoForm)
+  {
   newTodoForm.addEventListener('submit', (e) => {
-    e.preventDefault()
+      e.preventDefault()
 
-    const todo = {
-      content: e.target.elements.content.value,
-      category: e.target.elements.category.value,
-      done: false,
-      createdAt: new Date().getTime(),
+      const todo = {
+        content: e.target.elements.content.value,
+        category: e.target.elements.category.value,
+        done: false,
+        createdAt: new Date().getTime(),
+      }
+
+      todos.push(todo)
+
+      localStorage.setItem('todos', JSON.stringify(todos))
+
+      // Reset the form
+      e.target.reset()
+
+      DisplayTodos()
     }
-
-    todos.push(todo)
-
-    localStorage.setItem('todos', JSON.stringify(todos))
-
-    // Reset the form
-    e.target.reset()
-
-    DisplayTodos()
-  })
+  )
 
   DisplayTodos()
+}
 })
 
 //Validation of the registring credentials
@@ -42,12 +58,37 @@ function formVal() {
 var pw = document.getElementById('pw')
 var name = document.getElementById('name')
 
-function store() {
+function signup() {
+  accounts = localStorage.getObject('accounts')
+  accounts[document.getElementById('signup_email').value] = {}
+  account = accounts[document.getElementById('signup_email').value]
+  account['password'] = document.getElementById('signup_pass').value
   localStorage.setItem(
     'login_email',
-    document.getElementById('login_email').value
+    document.getElementById('signup_email').value
   )
-  localStorage.setItem('pw', pw.value)
+  alert(JSON.stringify(accounts))
+  localStorage.setItem('accounts', JSON.stringify(accounts))
+}
+
+function store(e) {
+  accounts = localStorage.getObject('accounts')
+  var email = document.getElementById('login_email').value
+  if (
+    accounts.hasOwnProperty(email) //&&
+    //Object.entries(accounts[email])[password] ==
+    // document.getElementById('login_password')
+  ) {
+    localStorage.setItem(
+      'login_email',
+      document.getElementById('login_email').value
+    )
+    return true
+  } else {
+    e.preventDefault()
+    alert('Invalid email or password')
+    return false
+  }
 }
 
 function valPas() {
