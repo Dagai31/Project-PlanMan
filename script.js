@@ -2,7 +2,6 @@ window.addEventListener('load', () => {
   todos = JSON.parse(localStorage.getItem('todos')) || []
   const nameInput = document.querySelector('#name')
   const newTodoForm = document.querySelector('#new-todo-form')
-
   const username = localStorage.getItem('username') || ''
 
   nameInput.value = username
@@ -38,7 +37,6 @@ window.addEventListener('load', () => {
 function formVal() {
   var emailId = document.getElementById('login_email').value
   var pass = document.getElementById('password').value
-  
 }
 
 var pw = document.getElementById('pw')
@@ -106,7 +104,6 @@ function DisplayTodos() {
     todoItem.appendChild(label)
     todoItem.appendChild(content)
     todoItem.appendChild(actions)
-
     todoList.appendChild(todoItem)
 
     if (todo.done) {
@@ -122,9 +119,9 @@ function DisplayTodos() {
       } else {
         todoItem.classList.remove('done')
       }
-
       DisplayTodos()
     })
+
 
     edit.addEventListener('click', (e) => {
       const input = content.querySelector('input')
