@@ -55,4 +55,13 @@ addTask.addEventListener("click",(e)=> {
     </div>`;
     });
     listBox.innerHTML = htmlCode;
-    }  
+} 
+    
+function emptyInput()
+{
+  var input = document.getElementById("content_todo").value;
+  if (input == "") {
+    alert("You forgot to put your task in!");
+    return false;
+  }
+}
