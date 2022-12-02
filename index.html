@@ -38,8 +38,9 @@
 
 
         <div class="field">
-          <input id="login_email" type="email" placeholder="Email Address" required >
+          <input id="login_email" type="email" placeholder="Email Address" required>
         </div>
+        <span id="incorrect_email_alert"></span>
         <div class="field">
           <input type="password" placeholder="Password" required>
         </div>
@@ -49,7 +50,7 @@
         <div class="field btn">
           <div class="btn-layer">
           </div>
-          <input type="submit" value="Login">
+          <input type="submit" value="Login" onclick="valLogMail()">
         </div>
         <div class="signup-link">
           Not a member? <a href="">Sign up now</a>
@@ -59,8 +60,9 @@
       <!-- signup form leading to landing page -->
       <form class="signup" onsubmit="store()">
         <div class="field">
-          <input id="email" type="email" placeholder="Email Address" required>
+          <input id="signup_email" type="email" placeholder="Email Address" required onkeyup="valSignMail()">
         </div>
+        <span id="lblError" style="color: red"></span>
         <div class="field">
           <input type="password" id="signup_pass" placeholder="Password" required>
         </div>

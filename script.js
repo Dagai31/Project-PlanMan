@@ -72,13 +72,47 @@ function valPas() {
 }
 
 function incorectPas(){
-  if (document.getElementById('signup_pass').value != "" && document.getElementById('signup_confirm_pass').value != "") {
-                alert("Your response is submitted");
-            } else {
-                alert("Please fill all the fields");
-            }
+  if (document.getElementById('signup_pass').value != "" && document.getElementById('signup_confirm_pass').value != "") 
+  {
+    alert("Your response is submitted");
+  } else {
+    alert("Please fill all the fields");
+  }
 }
 
+//checking if the mail is valid
+function valLogMail()
+{
+  const regex_pattern =      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var login_email = document.getElementById('login_email').value
+  if(regex_pattern.test(login_email))
+  {
+    document.getElementById('incorrect_email_alert').style.color = 'green';
+    document.getElementById('incorrect_email_alert').innerHTML =
+        '';
+    document.getElementById('create').disabled = false;
+    document.getElementById('create').style.opacity = (1);
+  }
+  else {
+    document.getElementById('incorrect_email_alert').style.color = 'red';
+    document.getElementById('incorrect_email_alert').innerHTML
+      = 'Incorrect email';
+    document.getElementById('create').disabled = true;
+    document.getElementById('create').style.opacity = (0.4);
+  } 
+  
+}
+
+function valSignMail()
+{
+  var email = document.getElementById("signup_email").value;
+  var lblError = document.getElementById("lblError");
+  lblError.innerHTML = "";
+  var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+  if (!expr.test(email)) {
+    lblError.innerHTML = "Invalid email address.";
+  }
+}
 
 
 function check() {
