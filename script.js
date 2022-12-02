@@ -51,7 +51,10 @@ var name = document.getElementById('name')
 
 function store() {
   alert(document.getElementById('login_email').value)
-  localStorage.setItem('name', name.value)
+  localStorage.setItem(
+    'login_email',
+    document.getElementById('login_email').value
+  )
   localStorage.setItem('pw', pw.value)
 }
 
