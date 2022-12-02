@@ -38,25 +38,25 @@ window.addEventListener('load', () => {
 function formVal() {
   var userEmail = document.getElementById('login_email').value
 
-  var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-  if(emailId.value.match(mailformat))
-  {
-    document.form1.text1.focus();
-    return true;
+  var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+  if (emailId.value.match(mailformat)) {
+    document.form1.text1.focus()
+    return true
+  } else {
+    alert('Invalid email address.')
+    document.form1.text1.focus()
   }
-  else
-  {
-    alert("Invalid email address.");
-    document.form1.text1.focus();
-  return false;
+  return false
 }
 
 var pw = document.getElementById('pw')
 var name = document.getElementById('name')
 
 function store() {
-  alert(document.getElementById('login_email').value)
-  localStorage.setItem('name', name.value)
+  localStorage.setItem(
+    'login_email',
+    document.getElementById('login_email').value
+  )
   localStorage.setItem('pw', pw.value)
 }
 
