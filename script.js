@@ -94,7 +94,9 @@ function store(e) {
     return true
   } else {
     e.preventDefault()
-    alert('Invalid email or password')
+        document.getElementById('incorrect_email_alert').style.color = 'red';
+    document.getElementById('incorrect_email_alert').innerHTML
+      = 'Invalid username or password';
     return false
   }
 }
