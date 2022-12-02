@@ -37,7 +37,7 @@
       <form onsubmit="store()" class="login" action="landing.html">
 
         <div class="field">
-          <input id="login_email" type="email" placeholder="Email Address" required>
+          <input id="login_email" type="email" placeholder="Email Address" required onkeyup="valLogMail()">
         </div>
         <span id="incorrect_email_alert"></span>
         <div class="field">
@@ -49,7 +49,7 @@
         <div class="field btn">
           <div class="btn-layer">
           </div>
-          <input type="submit" value="Login" onclick="valLogMail()">
+          <input type="submit" value="Login">
         </div>
         <div class="signup-link">
           Not a member? <a href="">Sign up now</a>
