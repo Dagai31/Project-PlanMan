@@ -1,159 +1,150 @@
 window.addEventListener('load', () => {
-    todos = JSON.parse(localStorage.getItem('todos')) || [];
-    const nameInput = document.querySelector('#name');
-    const newTodoForm = document.querySelector('#new-todo-form');
+  todos = JSON.parse(localStorage.getItem('todos')) || []
+  const nameInput = document.querySelector('#name')
+  const newTodoForm = document.querySelector('#new-todo-form')
 
-	
-    const username = localStorage.getItem('username') || '';
+  const username = localStorage.getItem('username') || ''
 
-    nameInput.value = username;
+  nameInput.value = username
 
-    nameInput.addEventListener('change', (e) => {
-        localStorage.setItem('username', e.target.value);
-    })
+  nameInput.addEventListener('change', (e) => {
+    localStorage.setItem('username', e.target.value)
+  })
 
-    newTodoForm.addEventListener('submit', e => {
-        e.preventDefault();
+  newTodoForm.addEventListener('submit', (e) => {
+    e.preventDefault()
 
-        const todo = {
-            content: e.target.elements.content.value,
-            category: e.target.elements.category.value,
-            done: false,
-            createdAt: new Date().getTime()
-        }
+    const todo = {
+      content: e.target.elements.content.value,
+      category: e.target.elements.category.value,
+      done: false,
+      createdAt: new Date().getTime(),
+    }
 
-        todos.push(todo);
+    todos.push(todo)
 
-        localStorage.setItem('todos', JSON.stringify(todos));
+    localStorage.setItem('todos', JSON.stringify(todos))
 
-        // Reset the form
-        e.target.reset();
-
-        DisplayTodos()
-    })
+    // Reset the form
+    e.target.reset()
 
     DisplayTodos()
+  })
+
+  DisplayTodos()
 })
 
 //Validation of the registring credentials
-function formVal(){
-	
-	var userEmail = document.registration.userEmail;
-	var userPw = document.registration.userPw;
-	
-	if(pwid_validation(userPw,7,15))
-	{
-		if(ValidateEmail(userEmail)){
-			
-		}
-	}
-return false;
-}
+function formVal() {
+  var userEmail = document.registration.userEmail
+  var userPw = document.registration.userPw
 
-
-var pw = document.getElementById('pw');
-var name = document.getElementById('name');	
-
-function store(){
-	localStorage.setItem('name',name.value);
-	localStorage.setItem('pw',pw.value);
-}
-
-function check(){
-	
-	var ourName = localStorage.getItem('name');
-	var ourPw = localStorage.getItem('pw');
-	
-	var userPw = document.getElementById('userPw');
-	var userName = document.getElementById('UserName');	
-
-	
-	if(userName.value == ourName && userPw.value !== ourPw) {
-         alert('You are loged in.');
-    }else {
-		alert('ERROR!');
+  if (pwid_validation(userPw, 7, 15)) {
+    if (ValidateEmail(userEmail)) {
     }
+  }
+  return false
 }
 
-function DisplayTodos () {
-    const todoList = document.querySelector('#todo-list');
-    todoList.innerHTML = "";
+var pw = document.getElementById('pw')
+var name = document.getElementById('name')
 
-    todos.forEach(todo => {
-        const todoItem = document.createElement('div');
-        todoItem.classList.add('todo-item');
+function store() {
+  alert(document.getElementById('login_email').value)
+  localStorage.setItem('name', name.value)
+  localStorage.setItem('pw', pw.value)
+}
 
-        const label = document.createElement('label');
-        const input = document.createElement('input');
-        const span = document.createElement('span');
-        const content = document.createElement('div');
-        const actions = document.createElement('div');
-        const edit = document.createElement('button');
-        const deleteButton = document.createElement('button');
+function check() {
+  var ourName = localStorage.getItem('name')
+  var ourPw = localStorage.getItem('pw')
 
-        input.type = 'checkbox';
-        input.checked = todo.done;
-        span.classList.add('bubble');
-        if (todo.category == 'personal') {
-            span.classList.add('personal');
-        } else {
-            span.classList.add('business');
-        }
-        content.classList.add('todo-content');
-        actions.classList.add('actions');
-        edit.classList.add('edit');
-        deleteButton.classList.add('delete');
+  var userPw = document.getElementById('userPw')
+  var userName = document.getElementById('UserName')
 
-        content.innerHTML = `<input type="text" value="${todo.content}" readonly>`;
-        edit.innerHTML = 'Edit';
-        deleteButton.innerHTML = 'Delete';
+  if (userName.value == ourName && userPw.value !== ourPw) {
+    alert('You are loged in.')
+  } else {
+    alert('ERROR!')
+  }
+}
 
-        label.appendChild(input);
-        label.appendChild(span);
-        actions.appendChild(edit);
-        actions.appendChild(deleteButton);
-        todoItem.appendChild(label);
-        todoItem.appendChild(content);
-        todoItem.appendChild(actions);
+function DisplayTodos() {
+  const todoList = document.querySelector('#todo-list')
+  todoList.innerHTML = ''
 
-        todoList.appendChild(todoItem);
+  todos.forEach((todo) => {
+    const todoItem = document.createElement('div')
+    todoItem.classList.add('todo-item')
 
-        if (todo.done) {
-            todoItem.classList.add('done');
-        }
+    const label = document.createElement('label')
+    const input = document.createElement('input')
+    const span = document.createElement('span')
+    const content = document.createElement('div')
+    const actions = document.createElement('div')
+    const edit = document.createElement('button')
+    const deleteButton = document.createElement('button')
 
-        input.addEventListener('change', (e) => {
-            todo.done = e.target.checked;
-            localStorage.setItem('todos', JSON.stringify(todos));
+    input.type = 'checkbox'
+    input.checked = todo.done
+    span.classList.add('bubble')
+    if (todo.category == 'personal') {
+      span.classList.add('personal')
+    } else {
+      span.classList.add('business')
+    }
+    content.classList.add('todo-content')
+    actions.classList.add('actions')
+    edit.classList.add('edit')
+    deleteButton.classList.add('delete')
 
-            if (todo.done) {
-                todoItem.classList.add('done');
-            } else {
-                todoItem.classList.remove('done');
-            }
+    content.innerHTML = `<input type="text" value="${todo.content}" readonly>`
+    edit.innerHTML = 'Edit'
+    deleteButton.innerHTML = 'Delete'
 
-            DisplayTodos()
+    label.appendChild(input)
+    label.appendChild(span)
+    actions.appendChild(edit)
+    actions.appendChild(deleteButton)
+    todoItem.appendChild(label)
+    todoItem.appendChild(content)
+    todoItem.appendChild(actions)
 
-        })
+    todoList.appendChild(todoItem)
 
-        edit.addEventListener('click', (e) => {
-            const input = content.querySelector('input');
-            input.removeAttribute('readonly');
-            input.focus();
-            input.addEventListener('blur', (e) => {
-                input.setAttribute('readonly', true);
-                todo.content = e.target.value;
-                localStorage.setItem('todos', JSON.stringify(todos));
-                DisplayTodos()
+    if (todo.done) {
+      todoItem.classList.add('done')
+    }
 
-            })
-        })
+    input.addEventListener('change', (e) => {
+      todo.done = e.target.checked
+      localStorage.setItem('todos', JSON.stringify(todos))
 
-        deleteButton.addEventListener('click', (e) => {
-            todos = todos.filter(t => t != todo);
-            localStorage.setItem('todos', JSON.stringify(todos));
-            DisplayTodos()
-        })
+      if (todo.done) {
+        todoItem.classList.add('done')
+      } else {
+        todoItem.classList.remove('done')
+      }
 
+      DisplayTodos()
     })
+
+    edit.addEventListener('click', (e) => {
+      const input = content.querySelector('input')
+      input.removeAttribute('readonly')
+      input.focus()
+      input.addEventListener('blur', (e) => {
+        input.setAttribute('readonly', true)
+        todo.content = e.target.value
+        localStorage.setItem('todos', JSON.stringify(todos))
+        DisplayTodos()
+      })
+    })
+
+    deleteButton.addEventListener('click', (e) => {
+      todos = todos.filter((t) => t != todo)
+      localStorage.setItem('todos', JSON.stringify(todos))
+      DisplayTodos()
+    })
+  })
 }

@@ -34,11 +34,11 @@
     <div class="form-inner">
 
       <!-- submitting form leads to main landing page from login -->
-      <form action='landing.html' class="login">
+      <form onsubmit="store()" class="login">
 
 
         <div class="field">
-          <input type="text" placeholder="Email Address" required>
+          <input id="login_email" type="text" placeholder="Email Address" required>
         </div>
         <div class="field">
           <input type="password" placeholder="Password" required>
@@ -57,9 +57,9 @@
       </form>
 
       <!-- signup form leading to landing page -->
-      <form action="landing.html" class="signup">
+      <form class="signup" onsubmit="store()">
         <div class="field">
-          <input type="text" placeholder="Email Address" required>
+          <input id="email" type="text" placeholder="Email Address" required>
         </div>
         <div class="field">
           <input type="password" placeholder="Password" required>
@@ -78,20 +78,9 @@
 
 
 
- <form id="register-form"> 
-            <input id="name" type="text" placeholder="Name" value=""/>
-            <input id="pw" type="password" placeholder="Password" value=""/>
-            <input id="rgstr_btn" type="submit" value="get Account" onClick="store()"/> 
-        </form>
-
-        <form id="login-form"> 
-            <input id="userName" type="text" placeholder="Enter Username" value=""/>
-            <input id="userPw" type="password" placeholder="Enter Password" value=""/>
-            <input id="login_btn" type="submit" value="Login" onClick="check()"/> 
-       </form>
-
     <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
     <script type="text/javascript" language="javascript" src="login.js"></script>
+    <script type="text/javascript" language="javascript" src="script.js"></script>
 
 
 
