@@ -26,14 +26,14 @@
     <!-- Todo -->
     <section class="create-todo">
         <h3>ADD AN ITEM</h3>
-        <form id="new-todo-form">
+        <form id="new-todo-form" onsubmit="return emptyInput(event)">
             <h4>What's on your action list?</h4>
             <input
                     type="text"
                     placeholder="e.g. create PlanMan frontend"
                     name="content"
                     id="content_todo" 
-                    onsubmit="return emptyInput()" method="post" required/>
+                 method="post" required/>
 
             <h4>Pick a category</h4>
             <div class="options">
