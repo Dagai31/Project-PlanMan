@@ -52,6 +52,35 @@ function store() {
   localStorage.setItem('pw', pw.value)
 }
 
+function valPas() {
+  var signup_pass = document.getElementById('signup_pass').value
+  var signup_confirm_pass = document.getElementById('signup_confirm_pass').value
+  if (signup_pass != signup_confirm_pass) {
+    document.getElementById('wrong_pass_alert').style.color = 'red';
+    document.getElementById('wrong_pass_alert').innerHTML
+      = '☒ Use same password';
+    document.getElementById('create').disabled = true;
+    document.getElementById('create').style.opacity = (0.4);
+  } else {
+    document.getElementById('wrong_pass_alert').style.color = 'green';
+    document.getElementById('wrong_pass_alert').innerHTML =
+        '🗹 Password Matched';
+    document.getElementById('create').disabled = false;
+    document.getElementById('create').style.opacity = (1);
+  }
+
+}
+
+function incorectPas(){
+  if (document.getElementById('signup_pass').value != "" && document.getElementById('signup_confirm_pass').value != "") {
+                alert("Your response is submitted");
+            } else {
+                alert("Please fill all the fields");
+            }
+}
+
+
+
 function check() {
   var ourName = localStorage.getItem('name')
   var ourPw = localStorage.getItem('pw')
