@@ -59,17 +59,18 @@
       <!-- signup form leading to landing page -->
       <form class="signup" onsubmit="store()">
         <div class="field">
-          <input id="email" type="text" placeholder="Email Address" required>
+          <input id="email" type="email" placeholder="Email Address" required>
         </div>
         <div class="field">
-          <input type="password" placeholder="Password" required>
+          <input type="password" id="signup_pass" placeholder="Password" required>
         </div>
         <div class="field">
-          <input type="password" placeholder="Confirm password" required>
+          <input type="password" id="signup_confirm_pass" placeholder="Confirm password" required onkeyup="validate_password()">
         </div>
+        <span id="wrong_pass_alert"></span>
         <div class="field btn">
           <div class="btn-layer"></div>
-          <input type="submit" value="Sign up">
+          <input type="submit" value="Sign up" onclick="wrong_pass_alert()">
         </div>
       </form>
     </div>
