@@ -8,7 +8,7 @@ Storage.prototype.getObject = function(key) {
 }
 
 window.addEventListener('load', () => {
-  todos = JSON.parse(localStorage.getItem('todos')) || []
+  todos = JSON.parse(localStorage.getItem(sessionStorage.getItem('user_email') + '_todos')) || []
   const nameInput = document.querySelector('#login_email')
   const newTodoForm = document.querySelector('#new-todo-form')
   const username = sessionStorage.getItem("user_email") || ''
@@ -36,7 +36,7 @@ window.addEventListener('load', () => {
 
       todos.push(todo)
 
-      localStorage.setItem('todos', JSON.stringify(todos))
+      localStorage.setItem(sessionStorage.getItem('user_email') + '_todos', JSON.stringify(todos))
 
       // Reset the form
       e.target.reset()
