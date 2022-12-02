@@ -36,24 +36,27 @@ window.addEventListener('load', () => {
 
 //Validation of the registring credentials
 function formVal() {
-  var userEmail = document.registration.userEmail
-  var userPw = document.registration.userPw
+  var userEmail = document.getElementById('login_email').value
 
-  if (pwid_validation(userPw, 7, 15)) {
-    if (ValidateEmail(userEmail)) {
-    }
+  var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+  if(emailId.value.match(mailformat))
+  {
+    document.form1.text1.focus();
+    return true;
   }
-  return false
+  else
+  {
+    alert("Invalid email address.");
+    document.form1.text1.focus();
+  return false;
 }
 
 var pw = document.getElementById('pw')
 var name = document.getElementById('name')
 
 function store() {
-  localStorage.setItem(
-    'login_email',
-    document.getElementById('login_email').value
-  )
+  alert(document.getElementById('login_email').value)
+  localStorage.setItem('name', name.value)
   localStorage.setItem('pw', pw.value)
 }
 
